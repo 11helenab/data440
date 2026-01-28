@@ -1,0 +1,40 @@
+import numpy as np
+import os
+
+PATH_DATA = 'data'
+
+#this file should contain code related to working with the data and nothing else
+
+def make_data(n: int = 100, low: int = 0, high: int= 25) -> np.array: #snake case
+    '''
+    return an nx2 array of random integers between low and high (inclusive)
+    '''
+
+    return np.random.randint(low=low, high = high +1, size = (n, 2))
+
+def save_data(data: np.ndarray, filename: str) -> None:
+    '''
+    save a np array to the default output folder, ensuring that the folder extists
+    '''
+
+    full_filename = os.path/join(PATH_DATA, filename)
+
+    #ensure the output directory exists
+    if not os.path.exists(PATH_DATA):
+        os.mkdir(PATH_DATA)
+    
+    if type(data) != np.ndarray:
+        raise TypeError(f"Data sould be a numpy array, but a {type(data)} was provided")
+    
+    #don't overwrite an existing file name
+    if os.path.exists(full_filename):
+        raise FileExistsError(f'File {full_filename} already esists')
+    
+    np.save(full_filename, data)
+    return None
+
+def load_data(filename: str) -> np.ndarray:
+    '''
+   loads data from an .npy dile licated in the default directory
+    '''
+    return np.load(os.path.join(PATH_DATA, filename))
