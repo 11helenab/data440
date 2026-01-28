@@ -17,7 +17,7 @@ def save_data(data: np.ndarray, filename: str) -> None:
     save a np array to the default output folder, ensuring that the folder extists
     '''
 
-    full_filename = os.path/join(PATH_DATA, filename)
+    full_filename = os.path.join(PATH_DATA, filename)
 
     #ensure the output directory exists
     if not os.path.exists(PATH_DATA):
